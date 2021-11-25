@@ -34,3 +34,36 @@ Pasos para iniciar el proyecto:
 - **Paso 5**: Instalaremos html-webpack-plugin con: `npm i html-webpack-plugin --save-dev`.
 - **Paso 6**: Instalaremos webpack-dev-server con: `npm i webpack-dev-server --save-dev`.
 - **Paso 7**: Añadiremos un nuevo script llamado dev en nuestro package.json: `"dev": "webpack serve"`.
+
+# Instalación de React y Babel
+Instalando React
+```
+npm i react react-dom
+npm i @babel/core @babel/preset-env babel-loader @babel/preset-react --save-dev
+```
+Ahora añadiremos en nuestro `webpack.config.js` lo siguiente:
+```js
+// webpack.config.js
+
+{/*...*/}
+module.exports = {
+        {/*...*/}
+        module: {
+                rules: [
+                        {
+                                test: /\.js$/,
+                                exclude: /node_modules/,
+                                use: {
+                                        loader: 'babel-loader',
+                                        options: {
+                                                presets: [
+                                                        '@babel/preset-env',
+                                                        '@babel/preset-react'
+                                                ]
+                                        }
+                                }
+                        }
+                ]
+        }
+}
+```
